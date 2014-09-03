@@ -19,3 +19,5 @@ webserver (mysql with php/PDO enabled)
 - Support multiple servers
 - GeoIP support (based on GeoIP Locator
 - Country Bans
+
+Demo: http://slashgaming.net/opensteam/
