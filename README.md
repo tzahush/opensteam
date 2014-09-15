@@ -20,4 +20,4 @@ webserver (mysql with php/PDO enabled)
 - GeoIP support (based on GeoIP Locator
 - Country Bans
 
-Demo: http://slashgaming.net/opensteam/
+Demo: http://stats.ohsystem.net/opensteam
