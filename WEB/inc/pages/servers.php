@@ -1,6 +1,5 @@
 <?php
 if (!isset( $cfg["website"] ) ) {header('HTTP/1.1 404 Not Found'); die; } 
-
      $sql = "";
 	 
 	 $PageTitle = $lang["Servers"]. ' | OpenSteam';
@@ -16,7 +15,8 @@ if (!isset( $cfg["website"] ) ) {header('HTTP/1.1 404 Not Found'); die; }
 	   $sql.=" AND `id` = '".$id."' ";
 	 }
 	 
-	 $sth = $db->prepare("SELECT * FROM `".OSSDB_SERVERS."` WHERE `id`>=1 $sql ORDER BY `id` DESC LIMIT 500");
+	 $sth = $db->prepare("SELECT * FROM `".OSSDB_SERVERS."` 
+	 WHERE `id`>=1 AND enabled = 1 $sql ORDER BY `id` DESC LIMIT 500");
 	 $result = $sth->execute();
 	 
 	 $ServersData = array();
@@ -36,7 +36,7 @@ if (!isset( $cfg["website"] ) ) {header('HTTP/1.1 404 Not Found'); die; }
 	   $ServersData[$c]["server_ip"]   = $row["server_ip"];
 	   $ServersData[$c]["server_port"] = $row["server_port"];
 	   $ServersData[$c]["server_rcon"] = $row["server_rcon"];
-	 
+
 	 //Connect to SERVER
 	 //if(isset($_GET["id"]) AND is_numeric($_GET["id"]) AND isset($ServersData[0]["server_ip"]) ) {
 
@@ -58,6 +58,10 @@ if (!isset( $cfg["website"] ) ) {header('HTTP/1.1 404 Not Found'); die; }
 			 if( $info == "MaxPlayers" ) $ServerMaxPlayers = $v;  
 			 if( $info == "Version" )    $ServerVersion = $v; 
 			 if( $info == "GamePort" )   $ServerGamePort = $v; 
+			 
+			 if ( file_exists( OSS_MAPS_PATH . strtolower($ServerMap) . ".jpg" ) ) {
+			  $ServersData[$c]["Image"] = OSS_HOME . OSS_MAPS_PATH . strtolower($ServerMap) . ".jpg"; 
+			 }
 		  //} 
 		
 		}
