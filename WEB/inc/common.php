@@ -219,7 +219,7 @@ function ConvertToSteam32($Steam64ID)
 	return $Steam32ID;
 }
 
-function OSS_Curl( $url = "http://ohsystem.net/stats/version_os.php?check" ) {
+function OSS_Curl( $url = "http://stats.ohsystem.net/opensteam/version.php" ) {
  
    if (function_exists('curl_init') AND isset($_SESSION["logged"]) ) {
    

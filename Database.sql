@@ -55,7 +55,10 @@ CREATE TABLE IF NOT EXISTS `ph_servers` (
   `server_ip` varchar(20) NOT NULL,
   `server_port` varchar(16) NOT NULL,
   `server_rcon` varchar(128) NOT NULL,
-  PRIMARY KEY (`id`)
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `server_ip` (`server_ip`,`server_port`),
+  KEY `enabled` (`enabled`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
