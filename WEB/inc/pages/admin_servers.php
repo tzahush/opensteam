@@ -21,6 +21,7 @@
 		$server_ip   = trim( strip_tags($_POST["server_ip"]) );
 		$server_port = trim( strip_tags($_POST["server_port"]) );
 		$server_rcon = trim( strip_tags($_POST["server_rcon"]) );
+		$server_enabled = trim( strip_tags($_POST["enabled"]) );
 		
 		if( strlen($server_name)<=2 OR strlen($server_ip)<=2 OR empty($server_port) OR !is_numeric($server_port) ) {
 		   header("location: ".OSS_HOME."?option=admin_servers&error");
@@ -28,7 +29,7 @@
 		}
 		//INSERT/UPDATE
         if(!isset($_GET["edit"])) {
-		$sth = $db->prepare("INSERT INTO `".OSSDB_SERVERS."`(server_name, server_ip, server_port, server_rcon) VALUES(:server_name, :server_ip, :server_port, :server_rcon) ON DUPLICATE KEY UPDATE server_name = :server_name2, server_ip = :server_ip2, server_port=:server_port2, server_rcon = :server_rcon2 ");
+		$sth = $db->prepare("INSERT INTO `".OSSDB_SERVERS."`(server_name, server_ip, server_port, server_rcon, eabled) VALUES(:server_name, :server_ip, :server_port, :server_rcon, :enabled) ON DUPLICATE KEY UPDATE server_name = :server_name2, server_ip = :server_ip2, server_port=:server_port2, server_rcon = :server_rcon2, enabled=:enabled ");
 		
 		$sth->bindValue(':server_name',         $server_name,                 PDO::PARAM_STR); 
 		$sth->bindValue(':server_ip',           $server_ip,                   PDO::PARAM_STR); 
@@ -38,12 +39,13 @@
 		$sth->bindValue(':server_ip2',          $server_ip,                   PDO::PARAM_STR); 
 		$sth->bindValue(':server_port2',        $server_port,                 PDO::PARAM_STR); 
 		$sth->bindValue(':server_rcon2',        $server_rcon,                 PDO::PARAM_STR); 
+		$sth->bindValue(':enabled',             $server_enabled,              PDO::PARAM_STR); 
 		
 		$result = $sth->execute();
 		$serverID = $db->lastInsertId(); 
 		} else {
 		$serverID = (int)$_GET["edit"];
-		$sth = $db->prepare("UPDATE `".OSSDB_SERVERS."` SET server_name = :server_name, server_ip = :server_ip, server_port=:server_port, server_rcon = :server_rcon
+		$sth = $db->prepare("UPDATE `".OSSDB_SERVERS."` SET server_name = :server_name, server_ip = :server_ip, server_port=:server_port, server_rcon = :server_rcon, enabled=:enabled
 		WHERE `id` = :serverID ");
 		
 		$sth->bindValue(':server_name',        $server_name,                 PDO::PARAM_STR); 
@@ -51,6 +53,7 @@
 		$sth->bindValue(':server_port',        $server_port,                 PDO::PARAM_STR); 
 		$sth->bindValue(':server_rcon',        $server_rcon,                 PDO::PARAM_STR); 
 		$sth->bindValue(':serverID',           $serverID,                    PDO::PARAM_STR); 
+		$sth->bindValue(':enabled',             $server_enabled,              PDO::PARAM_STR); 
 		
 		$result = $sth->execute();
 		}
@@ -65,7 +68,10 @@
 	 $EditServer["server_ip"] = "";
 	 $EditServer["server_port"] = "";
 	 $EditServer["server_rcon"] = "";
+	 $EditServer["enabled"]     = "";
 	 $EditServer["button"]      = $lang["AddServer"];
+	 $EditServer["enabled_sel"] = ''; 
+	 $EditServer["disabled_sel"] = ''; 
 	 //GET ALL SERVERS
 	 if( isset($_GET["edit"]) AND is_numeric($_GET["edit"]) ) {
 	   $serverID = (int)$_GET["edit"]; 
@@ -101,11 +107,27 @@
 	   $ServersData[$c]["remote_control"] = 'disabled="disabled"'; else
 	   $ServersData[$c]["remote_control"] = '';
 	   
+	   $ServersData[$c]["enabled"]   = $row["enabled"];
+	   
+	   if ($row["enabled"] == 1) $ServersData[$c]["class"] = "info"; else $ServersData[$c]["class"] = "danger";
+	   
 	   if(isset($_GET["edit"])) {
 	   $EditServer["server_name"] = $row["server_name"];
 	   $EditServer["server_ip"]   = $row["server_ip"];
 	   $EditServer["server_port"] = $row["server_port"];
 	   $EditServer["server_rcon"] = $row["server_rcon"];
+	   
+	   $EditServer["enabled"]     = $row["enabled"];
+	   
+	   if ($row["enabled"] == 1) { 
+	      $EditServer["class"] = "info"; 
+		  $EditServer["enabled_sel"]  = 'selected="selected"'; 
+		  $EditServer["disabled_sel"] = ''; 
+		} else { 
+		$EditServer["class"] = "danger";
+		$EditServer["enabled_sel"]  = ''; 
+		$EditServer["disabled_sel"] = 'selected="selected"'; 
+		}
 	   }
 	   $c++;
 	 }

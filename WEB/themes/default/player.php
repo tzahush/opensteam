@@ -13,6 +13,7 @@
          <div class="alert alert-dismissable alert-danger">
             <div><strong><?=$lang["Banned"]?>: </strong> <?=$PlayerInfo["bantime"]?></div>
             <div><?=OB_ExpireDateRemain($PlayerInfo["expire_date"])?></div>
+			<div><strong><?=$lang["BanReason"]?>: </strong> <?=$PlayerInfo["reason"]?></div>
          </div>
 <?php } ?>
 

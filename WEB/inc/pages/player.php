@@ -48,7 +48,6 @@
 	 $PlayerInfo ["country"] = "";
 	}
 
-<<<<<<< HEAD
 	$PlayerInfo["id"]            = $row["id"];
 	$PlayerInfo["steamID"]       = $row["steamID"];
 	$PlayerInfo["steam"]         = $row["steam"];
@@ -58,16 +57,6 @@
 	$PageTitle = htmlspecialchars_decode(PlayerNameSpecChar($row["playerName"])).' | OpenSteam';
 	$PlayerInfo["avatar"]          = $row["avatar"];
 	$PlayerInfo["avatar_medium"]   = $row["avatar_medium"];
-=======
-	$PlayerInfo["id"]      = $row["id"];
-	$PlayerInfo["steamID"] = $row["steamID"];
-	$PlayerInfo["steam"] = $row["steam"];
-	$PlayerInfo["location"] = $row["location"];
-	$PlayerInfo["playerName"] = htmlspecialchars_decode(PlayerNameSpecChar($row["playerName"]));
-	$PageTitle = htmlspecialchars_decode(PlayerNameSpecChar($row["playerName"])).' | OpenSteam';
-	$PlayerInfo["avatar"] = $row["avatar"];
-	$PlayerInfo["avatar_medium"] = $row["avatar_medium"];
->>>>>>> 908d7acaa97364f44f02916215ec24be6ed807b7
 	$PlayerInfo["last_connection"] = date( OSS_DATE_FORMAT, strtotime($row["last_connection"]) );
 	$PlayerInfo["connections"]     = $row["connections"];
 	$PlayerInfo["rank"]            = $row["rank"];
@@ -87,14 +76,14 @@
 	  $PlayerInfo["bantime"] = date( OSS_DATE_FORMAT, strtotime($row["bantime"]));
 	  $PlayerInfo["expire"]  = date( OSS_DATE_FORMAT, strtotime($row["expire"] ));
 	  $PlayerInfo["expire_date"]  = $row["expire"];
+	  $PlayerInfo["reason"]       = $row["reason"];
 	}
 	
 	//POINTSHOP ADDON
 	if($cfg["pointshop"] == 1 AND !empty($PlayerInfo["uniqueID"]) ) {
-	
 	 $sth = $db->prepare("SELECT ps.uniqueid, ps.points, ps.items
 	 FROM `".OSSDB_POINTSHOP."` as ps 
-	 WHERE ps.`items`!='' ".$sql." AND ps.uniqueid = '".$PlayerInfo["uniqueID"] ."'
+	 WHERE ps.`items`!='' AND ps.uniqueid = '".$PlayerInfo["uniqueID"] ."'
 	 LIMIT 1");
 	 $result = $sth->execute(); 
 	 
