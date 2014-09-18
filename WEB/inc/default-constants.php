@@ -27,6 +27,8 @@ define('OSS_THEMES_DIR',              $cfg["default_style"] );
 define('OSS_THEME_LINK',              OSS_HOME."themes/".OSS_THEMES_DIR."/");
 define('OSS_THEME_PATH',              "themes/".OSS_THEMES_DIR."/"); 
 
+define('OSS_MAPS_PATH',               $cfg["maps_path"] );
+
 define('OSS_PLUGINS_DIR',            'plugins/');
 define('OSS_PAGE_PATH',               "inc/pages/"); 
 define('OSS_LANGUAGE',                $cfg["default_language"] );

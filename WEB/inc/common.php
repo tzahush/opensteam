@@ -253,17 +253,17 @@ function OSS_IsAdmin( $rank = "" ) {
 
 }
 
-function OSS_EditUser( $userID ) {
+function OSS_EditUser( $userID, $class="floatR" ) {
     
    if(OSS_SuperAdmin() AND is_numeric($userID) ) {
    global $lang;
    ?>
-   <a class="btn btn-warning btn-xs floatR" href="<?=OSS_HOME?>?option=admin_edit_user&amp;id=<?=(int)$userID?>"><?=$lang["Edit"]?></a>
+   <a class="btn btn-warning btn-xs <?=$class?>" href="<?=OSS_HOME?>?option=admin_edit_user&amp;id=<?=(int)$userID?>"><?=$lang["Edit"]?></a>
    <?php
    } else if(OSS_SuperAdmin() AND !is_numeric($userID) ) {
    global $lang;
    ?>
-   <a class="btn btn-warning btn-xs floatR" href="<?=OSS_HOME?>?option=admin_edit_user&amp;id=<?=$userID?>"><?=$lang["Edit"]?></a>
+   <a class="btn btn-warning btn-xs <?=$class?>" href="<?=OSS_HOME?>?option=admin_edit_user&amp;id=<?=$userID?>"><?=$lang["Edit"]?></a>
    <?php
    }
 }

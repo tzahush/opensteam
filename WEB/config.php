@@ -27,6 +27,8 @@ $cfg["players_per_page"] = '30';
 //Show message info for banned users on loading screen
 $cfg["loading_ban_message"] = '1';
 
+$cfg["maps_path"] = 'img/maps/';
+
 //Pointshop support
 $cfg["pointshop"] = '1';
 

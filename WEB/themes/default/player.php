@@ -6,6 +6,7 @@
 <?php if( OSS_IsAdmin( $PlayerInfo["rank"] ) ) { ?>
             <div class="label label-primary"><?=$PlayerInfo["rank"] ?></div>
             <?php } ?>
+<?=OSS_EditUser($PlayerInfo["id"], "") ?>
 </legend>
 
 <?php if(!empty($PlayerInfo["expire"])) { ?>
