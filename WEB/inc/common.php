@@ -327,4 +327,22 @@ foreach($_GET as $key => $value) {
 if ($_SESSION) foreach($_SESSION as $key => $value) {
     $_SESSION[$key] = FilterData($value);
 }
+
+function OSS_RemoveExpiredBans() {
+
+   global $db;
+   global $cfg;
+   
+   if (!isset($_SESSION["expired_bans"]) ) {
+   
+     if ( isset($cfg["remove_expired_bans"]) AND  $cfg["remove_expired_bans"] == 1 ) {
+   
+     $sth = $db->prepare("DELETE FROM ".OSSDB_BANS." WHERE expire<=NOW() AND expire!='0000-00-00 00:00:00' ");
+	 $result = $sth->execute();
+     $_SESSION["expired_bans"] = time();
+     }
+	 
+	}
+
+}
 ?>

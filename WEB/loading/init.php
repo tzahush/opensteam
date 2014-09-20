@@ -45,6 +45,21 @@
   
   if(!file_exists( $image) ) $image = 'bcg/image_01.jpg';
   
+  //Clean old steams
+  $time = time();
+  $steamDIR = "./steams";
+  if ($handle = opendir( $steamDIR )) {
+   while (false !== ($file = readdir($handle))) 
+	{
+	  $FileExtension = pathinfo($file, PATHINFO_EXTENSION);
+	  $FileExtension = strtolower($FileExtension);
+      $FileTime = filemtime( $steamDIR."/".$file );
+      if ( $file!="." AND $file!=".." AND $file!="" AND $FileTime + ( $cfg["cache_steam_files"] ) <= $time ) {
+	  unlink($steamDIR. "/".$file);
+	  }
+	  }
+	}
+  
   $File = "steams/".$steamid.".php";
   $CacheTime = $cfg["cache_steam_files"];
   

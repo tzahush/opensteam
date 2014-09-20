@@ -82,6 +82,7 @@
  $lang["days"]                   = "dager";
  $lang["RemoveOldPlayers"]       = "Fjern gamle spillere";
  $lang["RemoveOldPlayersInfo"]   = "Fjern spillere fra databasen som ikke er aktive for <strong>X days</strong>. 0 for å deaktivere";
+ $lang["RemoveExpiredBans"]      = "Remove Expired Bans";
  $lang["ErrorReporting"]         = "Feilrapportering";
  $lang["Yes"]                    = "Ja";
  $lang["No"]                     = "Nei";

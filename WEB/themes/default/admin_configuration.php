@@ -53,6 +53,17 @@
 			</td>
          </tr>
          <tr>
+            <td width="180"><strong><?=$lang["RemoveExpiredBans"]?>:</strong></td>
+            <td>
+               <select name="remove_expired_bans">
+                  <?php if($cfg["remove_expired_bans"]=='1') $s='selected="selected"'; else $s="";?>
+                  <option <?=$s?> value="1">Yes</option>
+                  <?php if($cfg["remove_expired_bans"]=='0') $s='selected="selected"'; else $s="";?>
+                  <option <?=$s?> value="0">No</option>
+               </select>
+            </td>
+         </tr>
+         <tr>
             <td width="180"><strong><?=$lang["PointShop"]?>:</strong></td>
             <td>
                <select name="pointshop">

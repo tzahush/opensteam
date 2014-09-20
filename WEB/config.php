@@ -38,6 +38,9 @@ $cfg["remove_players"] = '90';
 //Cache steamIDs (used for loading url). Minutes
 $cfg["cache_time"] = '5';
 
+//Auto remove expired bans
+$cfg["remove_expired_bans"] = '1';
+
 // 3600*24*3 = 3 days (update parsed steam files from steam API)
 $cfg["cache_steam_files"] = 3600*24*3;
 

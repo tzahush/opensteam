@@ -1,4 +1,6 @@
 <?php
+    OSS_RemoveExpiredBans();
+	
     $sql = " AND p.playerName != ''";
 
 	if ( isset($_GET["search"]) AND strlen($_GET["search"])>=2 ) {
