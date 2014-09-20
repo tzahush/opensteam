@@ -29,7 +29,7 @@
 		}
 		//INSERT/UPDATE
         if(!isset($_GET["edit"])) {
-		$sth = $db->prepare("INSERT INTO `".OSSDB_SERVERS."`(server_name, server_ip, server_port, server_rcon, eabled) VALUES(:server_name, :server_ip, :server_port, :server_rcon, :enabled) ON DUPLICATE KEY UPDATE server_name = :server_name2, server_ip = :server_ip2, server_port=:server_port2, server_rcon = :server_rcon2, enabled=:enabled ");
+		$sth = $db->prepare("INSERT INTO `".OSSDB_SERVERS."`(server_name, server_ip, server_port, server_rcon, enabled) VALUES(:server_name, :server_ip, :server_port, :server_rcon, :enabled) ON DUPLICATE KEY UPDATE server_name = :server_name2, server_ip = :server_ip2, server_port=:server_port2, server_rcon = :server_rcon2, enabled=:enabled ");
 		
 		$sth->bindValue(':server_name',         $server_name,                 PDO::PARAM_STR); 
 		$sth->bindValue(':server_ip',           $server_ip,                   PDO::PARAM_STR); 
