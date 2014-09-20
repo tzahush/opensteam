@@ -127,6 +127,9 @@
  $lang["Option"]                 = "Valg";
  $lang["Remove"]                 = "Fjern";
  $lang["Delete"]                 = "slett";
+ $lang["ServerEnabled"]          = "Enabled";
+ $lang["ServerDisabled"]         = "Disabled";
+ $lang["ServerStatus"]           = "Status";
  
  $lang["ServerRemoteControl"]    = "Server Fjernstyring";
  $lang["SendCommand"]            = "Send kommando";

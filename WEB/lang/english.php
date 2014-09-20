@@ -128,6 +128,10 @@
  $lang["Remove"]                 = "Remove";
  $lang["Delete"]                 = "delete";
  
+ $lang["ServerEnabled"]          = "Enabled";
+ $lang["ServerDisabled"]         = "Disabled";
+ $lang["ServerStatus"]           = "Status";
+ 
  $lang["ServerRemoteControl"]    = "Server Remote Control";
  $lang["SendCommand"]            = "Send Command";
  $lang["Back"]                   = "Back";

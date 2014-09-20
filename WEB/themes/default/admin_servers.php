@@ -25,6 +25,15 @@
 		  <td><input type="text" value="<?=$EditServer["server_rcon"] ?>" name="server_rcon" size="30" /></td>
 	  </tr>
 	  <tr>
+		  <td  width="150"><b><?=$lang["ServerStatus"]?></b>: </td>
+		  <td>
+		    <select name="enabled">
+			  <option value="1" <?=$EditServer["enabled_sel"]?>><?=$lang["ServerEnabled"]?></option>
+			  <option value="0" <?=$EditServer["disabled_sel"]?>><?=$lang["ServerDisabled"]?></option>
+			</select>
+		  </td>
+	  </tr>
+	  <tr>
 		  <td  width="150"></td>
 		  <td>
 		    <input type="submit" value="<?=$EditServer["button"]?>" name="server_add" class="btn btn-primary" />
