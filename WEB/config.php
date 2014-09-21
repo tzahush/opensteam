@@ -45,12 +45,13 @@ $cfg["remove_expired_bans"] = '1';
 $cfg["cache_steam_files"] = 3600*24*3;
 
 //Enable error reportings
-$cfg["debug"] = '1';
+$cfg["debug"] = '0';
 
 $cfg["time_zone"] = 'Europe/Belgrade';
 
 $cfg["INSTALLED"] = '1';
 
 if($cfg["debug"] == 1 ) error_reporting(E_ALL);
+else  error_reporting(0);
 
 ?>
