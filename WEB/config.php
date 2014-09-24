@@ -17,6 +17,9 @@ $cfg["home_title"]       = 'OpenSteam and User Management System';
 $cfg["home_description"] = 'ULX OpenSteam';
 $cfg["home_keywords"]    = 'garrys mode, prop hunt, open bans, ulx';
 
+//Check if website path is correct (if everything working fine you can disable this)
+$cfg["checkPath"]        = '1';
+
 $cfg["default_language"] = 'english';
 $cfg["date_format"] = 'd.m.Y, H:i';
 $cfg["default_style"] = 'default';

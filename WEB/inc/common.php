@@ -345,4 +345,31 @@ function OSS_RemoveExpiredBans() {
 	}
 
 }
+
+function OSS_CheckWebsiteURL( $output = 0 ) {
+
+  if(isset($_SERVER['HTTPS'])) {
+  
+        if ($_SERVER["HTTPS"] == "on") {
+        $secure_connection = true;
+        }
+		
+   }
+   
+   if ( !isset($secure_connection) )
+   $actual_link = "http://".$_SERVER["HTTP_HOST"]."".$_SERVER["REQUEST_URI"];
+   else $actual_link = "https://".$_SERVER["HTTP_HOST"]."".$_SERVER["REQUEST_URI"];
+   
+   if ( $output == 1 ) {
+     global $cfg;
+	 if ( $cfg["website"] != $actual_link AND !$_GET AND $cfg["checkPath"] == 1) {
+	   echo "<div>Website URL is not correct. Check config.php</div>";
+	   echo "<div><b>Your config:</b> ".$cfg["website"]."</div>";
+	   echo "<div><b>Actual URL:</b> ".$actual_link."</div>";
+	   die();
+	 }
+   }
+   
+   return $actual_link;
+}
 ?>
