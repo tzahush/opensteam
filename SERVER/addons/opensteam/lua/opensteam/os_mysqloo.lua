@@ -275,10 +275,11 @@ function ulx.banuser( calling_ply, id, banTime, banReason )
 		    banTime = BAN_TIME
 		    Expire = tostring( os.date("%Y-%m-%d %H:%M:%S", os.time()+(banTime*60) ) )
 		  end
+		  local admin;
 		  if not IsValid(calling_ply) then
-		    local admin = "console" 
+		    admin = "console" 
 		  else
-		    local admin = tostring( calling_ply:GetName() )
+		    admin = tostring( calling_ply:GetName() )
 		  end
 		
         Msg(""..id.." "..player_name.." banned by ["..admin.."]\n")
